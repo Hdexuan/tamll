@@ -15,17 +15,15 @@ public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao {
 	private final String namespace="Product";
 
 	@Override
-	public Product queryCid(int cid) {
-		Map<String, Integer> map=new HashMap<String, Integer>();
-		map.put("id", cid);
-		return  (Product) getSqlSession().selectCursor(namespace+".queryCid", map);
+	public List<Product> queryCid(int cid) {
+		return  getSqlSession().selectList(namespace+".queryCid", cid);
 	} 
-	
+	 
 	@Override
 	public void addMor(List<Product> list) {
 		// TODO Auto-generated method stub
 		
-	}
+	} 
 
 	@Override
 	public List<Product> queryAll() {

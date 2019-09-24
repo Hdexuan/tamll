@@ -52,10 +52,9 @@
                     <td>${category.name}</td>
                    <!-- 属性管理 -->
                     <td><a href="admin_property_list?cid=${category.id}"><span class="glyphicon glyphicon-th-list"></span></a></td>
-                    <td><a href="admin_product_list?cid=${c.id}"><span class="glyphicon glyphicon-shopping-cart"></span></a></td>
+                    <td><a href="${pageContext.request.contextPath }/${category.id}"><span class="glyphicon glyphicon-shopping-cart"></span></a></td>
                     <td><a href="admin_category_edit?id=${c.id}"><span class="glyphicon glyphicon-edit"></span></a></td>
                     <td><a deleteLink="true" href="admin_category_delete?id=${c.id}"><span class="   glyphicon glyphicon-trash"></span></a></td>
-
                 </tr>
             </c:forEach>
             </tbody>

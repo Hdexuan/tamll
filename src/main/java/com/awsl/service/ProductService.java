@@ -10,7 +10,7 @@ public interface ProductService extends BaseServlce<Product> {
 	 * @param cid
 	 * @return
 	 */
-	public Product queryCid(int cid);
+	public List<Product> queryCid(int cid);
 	
 	//批量增加
 	public void addMor(List<Product> list);

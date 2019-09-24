@@ -9,8 +9,8 @@
        select * from product where id= #{id}    
      </select>
   
-     <select id="queryCid" resultType="Product" parameterType="int">
-         SELECT  * from category c,product p where c.id=p.cid and c.id=#{cid}
+     <select id="queryCid" resultType="Product" parameterType="map">
+         select  * from category c,product p where c.id=p.cid and c.id=#{id}
      </select>
     
      <select id="queryAll" resultType="Product"><!-- resultType="User" 返回结果类型 -->

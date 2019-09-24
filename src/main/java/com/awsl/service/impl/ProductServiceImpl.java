@@ -17,8 +17,7 @@ public class ProductServiceImpl extends BaseServiceImpl<Product> implements Prod
 	private ProductDao productDao;
 	
 	@Override
-	public Product queryCid(int cid) {
-		// TODO Auto-generated method stub
+	public List<Product> queryCid(int cid) {
 		return productDao.queryCid(cid);
 	}
 

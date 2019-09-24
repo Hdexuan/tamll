@@ -1,5 +1,7 @@
 package com.awsl.test;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,8 +12,10 @@ public class TestProduct {
 	public static void main(String[] args) {
 		ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
 		ProductService service=   (ProductService) context.getBean("productService");
-		Product product=service.queryById(Product.class, 87);
-		System.out.println(product);
+		List<Product> list =service.queryCid(83);
+		for(Product p:list) {
+			System.out.println(p);
+		}
 	}
 
 }
