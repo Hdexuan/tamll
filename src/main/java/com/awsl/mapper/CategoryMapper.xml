@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 使用接口实现  命名空间有所不同！ -->
+<mapper namespace="Category"><!-- 命名空间 -->
+    
+     <select id="queryById" resultType="Category">
+       select * from category where id= #{id}    
+     </select>
+  
+    
+     <select id="queryAll" resultType="Category"><!-- resultType="User" 返回结果类型 -->
+       select * from categoryr by id 
+     </select>
+     
+     <!-- 添加 -->
+     <insert id="add" parameterType="Category">
+         insert into category(name)  values(#{name}) 
+     </insert>
+     
+     <!-- 分页 -->
+     <select id="queryByPage" parameterType="map" resultType="Category">
+       select * from category  order by id limit  #{start},#{pageSize} 
+     </select>
+     
+     <!-- 根据主键删除信息 -->     
+     <delete id="deleteById" >
+         delete from category where id=#{id}
+     </delete>
+     <!-- 登陆 -->
+     <select id="login" resultType="Category"  parameterType="map">
+         select * from category where name=#{name} 
+     </select>
+     <!-- 总记录数 -->
+     <select id="getTotals" resultType="int">
+           select count(*) from category  
+     </select>
+     <!-- 更新数据 -->
+     <update id="update" parameterType="Category">
+		update category 
+		<trim prefix="set" suffixOverrides=",">
+			<if test="name!=null ">
+				name = #{name}
+			</if>
+			
+		</trim>
+		where id = #{id}
+		<!-- update user set username = #{username},password = #{password} where id = #{id} -->
+	</update>
+     
+    
+     
+</mapper> 
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 使用接口实现  命名空间有所不同！ -->
+<mapper namespace="Product"><!-- 命名空间 -->
+    
+     <select id="queryById" resultType="Product">
+       select * from product where id= #{id}    
+     </select>
+  
+     <select id="queryCid" resultType="Product" parameterType="int">
+         SELECT  * from category c,product p where c.id=p.cid and c.id=#{cid}
+     </select>
+    
+     <select id="queryAll" resultType="Product"><!-- resultType="User" 返回结果类型 -->
+       select * from product by id 
+     </select>
+     <!-- 添加用户-->
+     <insert id="add" parameterType="Product">
+        <!--   insert into product(name,subTitle,orignalPrice,promotePrice,stock,cid)  values(#{username},#{password})--> 
+     </insert>
+     <!-- 分页 -->
+     <select id="queryByPage" parameterType="map" resultType="Product">
+       select * from user order by id limit  #{start},#{pageSize} 
+     </select>
+     
+     <!-- 根据主键删除信息 -->     
+     <delete id="deleteById" >
+         delete from product where id=#{id}
+     </delete>
+     
+     <!-- 总记录数 -->
+     <select id="getTotals" resultType="int">
+           select count(*) from product  
+     </select>
+     <!-- 更新数据 -->
+     <update id="update" parameterType="Product">
+		update Product 
+		<trim prefix="set" suffixOverrides=",">
+			<if test="username!=null and username!=''">
+				name = #{username},
+			</if>
+			<if test="password!=null and password!=''">
+				password = #{password},
+			</if>
+		</trim>
+		where id = #{id}
+		<!-- update user set username = #{username},password = #{password} where id = #{id} -->
+	</update>
+    
+     
+    
+     
+</mapper> 
+
